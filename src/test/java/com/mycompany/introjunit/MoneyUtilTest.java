@@ -18,8 +18,8 @@ public class MoneyUtilTest {
 
     @Test
     public void testFormat() {
-        double money = 1000;
-        String expResult = "€1000.00";
+        double money = -1000;
+        String expResult = "-€1000.00";
         String result = MoneyUtil.format(money);
         assertEquals(expResult, result);
     }
