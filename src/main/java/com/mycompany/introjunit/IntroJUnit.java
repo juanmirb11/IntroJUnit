@@ -13,11 +13,5 @@ public class IntroJUnit {
         double salary = 1683.781;
         System.out.println(MoneyUtil.format(salary));
     }
-
-    class MoneyUtil {
-
-        public static String format(double money) {
-            return "$" + money;
-        }
-    }
+    
 }
