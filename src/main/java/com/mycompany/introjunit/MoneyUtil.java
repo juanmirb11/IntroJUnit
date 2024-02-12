@@ -4,8 +4,7 @@
  */
 package com.mycompany.introjunit;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
+import java.util.Locale;
 
 /**
  *
@@ -14,7 +13,18 @@ import java.math.RoundingMode;
 class MoneyUtil {
 
     public static String format(double money) {
-        BigDecimal roundedMoney = BigDecimal.valueOf(money).setScale(2, RoundingMode.HALF_UP);
-        return "$" + roundedMoney;
+        return format(money, "€");
+    }
+
+    public static String format(double money, String symbol) {
+        if (!(symbol instanceof String)) {
+            throw new IllegalArgumentException();
+        }
+        if (money < 0) {
+            symbol = "-" + symbol;
+            money *= -1;
+        }
+        String roundedMoney = String.format(Locale.US, "%.2f", money);
+        return symbol + roundedMoney;
     }
 }
